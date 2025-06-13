@@ -1,0 +1,96 @@
+from neuron import h, gui
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load NEURON's GUI
+h.load_file("stdrun.hoc")
+
+# Define the geometry of the electrode
+electrode_diameter = 0.5  # in mm
+electrode_length = 1.0    # in mm
+
+electrode_tip = h.Section(name='electrode_tip')
+electrode_tip.nseg = 1
+electrode_tip.diam = electrode_diameter
+electrode_tip.L = electrode_length
+
+# Define the material properties
+electrode_tip.Ra = 100  # Axial resistance in Ohm*cm
+electrode_tip.cm = 1    # Membrane capacitance in uF/cm^2
+
+# Define the surrounding tissue properties
+tissue_resistivity = 300  # Ohm*cm
+
+# Define the stimulation protocol
+stim = h.IClamp(electrode_tip(0.5))  # Place the electrode in the middle of the section
+stim.dur = 1.0   # Duration of the stimulus in ms
+stim.delay = 1.0 # Delay before the stimulus starts in ms
+
+# Define a range of currents to test (in mA)
+currents = np.linspace(0.1, 1.0, 10)
+
+# Set up vectors to record the membrane potential and time
+v_vec = h.Vector()
+t_vec = h.Vector()
+v_vec.record(electrode_tip(0.5)._ref_v)
+t_vec.record(h._ref_t)
+
+results = []
+for current in currents:
+    stim.amp = current  # Set the current amplitude
+    h.tstop = 10.0      # Set the simulation duration in ms
+    h.run()
+    # Store the results: (current, voltage vector, time vector)
+    results.append((current, np.array(v_vec), np.array(t_vec)))
+    h.finitialize(-65)  # Reset the simulation
+
+# Calculate the peak membrane potential for each current
+peak_values = [np.max(v) for _, v, _ in results]
+
+# Calculate the duration for which the membrane potential remains above threshold
+# Here, we use 0 mV as a threshold following ideas from typical action potential analysis.
+duration_values = []
+threshold = 0.0  # mV threshold for measuring duration
+for _, v, t in results:
+    indices_above = np.where(v > threshold)[0]
+    if indices_above.size > 0:
+        # Duration is the time difference between the last and first crossing of the threshold.
+        duration = t[indices_above[-1]] - t[indices_above[0]]
+    else:
+        duration = 0.0
+    duration_values.append(duration)
+
+# Identify the optimum current based on maximum peak value
+optimum_index = np.argmax(peak_values)
+optimum_current = currents[optimum_index]
+optimum_peak_value = peak_values[optimum_index]
+optimum_duration = duration_values[optimum_index]
+
+# Create a subplot with two panels: one for the graph and one for the table
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+
+# Plot the membrane potential responses
+for current, v, t in results:
+    ax1.plot(t, v, label=f'{current:.2f} mA')
+ax1.set_xlabel('Time (ms)')
+ax1.set_ylabel('Membrane Potential (mV)')
+ax1.set_title('Membrane Potential Response to DBS Stimulation')
+ax1.legend()
+ax1.grid(True)
+
+# Prepare the table data with currents, peak values, and durations
+col_labels = ['Current (mA)', 'Peak Value (mV)', 'Duration (ms)']
+cell_text = []
+for current, peak, dur in zip(currents, peak_values, duration_values):
+    cell_text.append([f'{current:.2f}', f'{peak:.2f}', f'{dur:.2f}'])
+
+# Create the table in the second subplot
+table = ax2.table(cellText=cell_text, colLabels=col_labels, loc='center')
+ax2.axis('off')
+ax2.set_title('Peak Values & Duration')
+
+plt.tight_layout()
+plt.show()
+
+# Print the optimum current with its corresponding peak value and duration
+print(f'Optimum current: {optimum_current:.2f} mA with peak value: {optimum_peak_value:.2f} mV and duration: {optimum_duration:.2f} ms')

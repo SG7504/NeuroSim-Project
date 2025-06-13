@@ -1,0 +1,96 @@
+Group,Neuron ID,Spikes,Rate (Hz),Bursts
+Purkinje Cells,Purkinje Cells_N001,71,710.0,71
+Purkinje Cells,Purkinje Cells_N002,71,710.0,71
+Purkinje Cells,Purkinje Cells_N003,71,710.0,71
+Purkinje Cells,Purkinje Cells_N004,71,710.0,71
+Purkinje Cells,Purkinje Cells_N005,71,710.0,71
+Purkinje Cells,Purkinje Cells_N006,71,710.0,71
+Purkinje Cells,Purkinje Cells_N007,71,710.0,71
+Purkinje Cells,Purkinje Cells_N008,71,710.0,71
+Purkinje Cells,Purkinje Cells_N009,71,710.0,71
+Purkinje Cells,Purkinje Cells_N010,71,710.0,71
+Purkinje Cells,Purkinje Cells_N011,71,710.0,71
+Purkinje Cells,Purkinje Cells_N012,71,710.0,71
+Purkinje Cells,Purkinje Cells_N013,71,710.0,71
+Purkinje Cells,Purkinje Cells_N014,71,710.0,71
+Purkinje Cells,Purkinje Cells_N015,71,710.0,71
+DCN,DCN_N001,71,710.0,71
+DCN,DCN_N002,71,710.0,71
+DCN,DCN_N003,71,710.0,71
+DCN,DCN_N004,71,710.0,71
+DCN,DCN_N005,71,710.0,71
+DCN,DCN_N006,71,710.0,71
+DCN,DCN_N007,71,710.0,71
+DCN,DCN_N008,71,710.0,71
+DCN,DCN_N009,71,710.0,71
+DCN,DCN_N010,71,710.0,71
+Thalamus,Thalamus_N001,11,110.0,11
+Thalamus,Thalamus_N002,11,110.0,11
+Thalamus,Thalamus_N003,11,110.0,11
+Thalamus,Thalamus_N004,11,110.0,11
+Thalamus,Thalamus_N005,11,110.0,11
+Thalamus,Thalamus_N006,11,110.0,11
+Thalamus,Thalamus_N007,11,110.0,11
+Thalamus,Thalamus_N008,11,110.0,11
+Thalamus,Thalamus_N009,11,110.0,11
+Thalamus,Thalamus_N010,11,110.0,11
+Motor Cortex,Motor Cortex_N001,5,50.0,5
+Motor Cortex,Motor Cortex_N002,5,50.0,5
+Motor Cortex,Motor Cortex_N003,5,50.0,5
+Motor Cortex,Motor Cortex_N004,5,50.0,5
+Motor Cortex,Motor Cortex_N005,5,50.0,5
+Motor Cortex,Motor Cortex_N006,5,50.0,5
+Motor Cortex,Motor Cortex_N007,5,50.0,5
+Motor Cortex,Motor Cortex_N008,5,50.0,5
+Motor Cortex,Motor Cortex_N009,5,50.0,5
+Motor Cortex,Motor Cortex_N010,5,50.0,5
+Motor Cortex,Motor Cortex_N011,5,50.0,5
+Motor Cortex,Motor Cortex_N012,5,50.0,5
+Motor Cortex,Motor Cortex_N013,5,50.0,5
+Motor Cortex,Motor Cortex_N014,5,50.0,5
+Motor Cortex,Motor Cortex_N015,5,50.0,5
+Motor Cortex,Motor Cortex_N016,5,50.0,5
+Motor Cortex,Motor Cortex_N017,5,50.0,5
+Motor Cortex,Motor Cortex_N018,5,50.0,5
+Motor Cortex,Motor Cortex_N019,5,50.0,5
+Motor Cortex,Motor Cortex_N020,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N001,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N002,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N003,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N004,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N005,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N006,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N007,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N008,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N009,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N010,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N011,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N012,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N013,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N014,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N015,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N016,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N017,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N018,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N019,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N020,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N021,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N022,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N023,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N024,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N025,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N026,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N027,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N028,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N029,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N030,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N031,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N032,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N033,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N034,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N035,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N036,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N037,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N038,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N039,5,50.0,5
+Corticospinal Tract,Corticospinal Tract_N040,5,50.0,5

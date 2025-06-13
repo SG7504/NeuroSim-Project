@@ -1,0 +1,91 @@
+Group,Neuron ID,Spikes,Rate (Hz),Bursts
+Purkinje Cells,Purkinje Cells_N001,43,430.0,43
+Purkinje Cells,Purkinje Cells_N002,43,430.0,43
+Purkinje Cells,Purkinje Cells_N003,44,440.0,44
+Purkinje Cells,Purkinje Cells_N004,42,420.0,42
+Purkinje Cells,Purkinje Cells_N005,43,430.0,43
+Purkinje Cells,Purkinje Cells_N006,44,440.0,44
+Purkinje Cells,Purkinje Cells_N007,43,430.0,43
+Purkinje Cells,Purkinje Cells_N008,44,440.0,44
+Purkinje Cells,Purkinje Cells_N009,42,420.0,42
+Purkinje Cells,Purkinje Cells_N010,44,440.0,44
+DCN,DCN_N001,34,340.0,34
+DCN,DCN_N002,34,340.0,34
+DCN,DCN_N003,34,340.0,34
+DCN,DCN_N004,33,330.0,33
+DCN,DCN_N005,34,340.0,34
+DCN,DCN_N006,33,330.0,33
+DCN,DCN_N007,35,350.0,35
+DCN,DCN_N008,32,320.0,32
+DCN,DCN_N009,33,330.0,33
+DCN,DCN_N010,31,310.0,31
+Thalamus,Thalamus_N001,11,110.0,11
+Thalamus,Thalamus_N002,11,110.0,11
+Thalamus,Thalamus_N003,11,110.0,11
+Thalamus,Thalamus_N004,10,100.0,10
+Thalamus,Thalamus_N005,11,110.0,11
+Thalamus,Thalamus_N006,11,110.0,11
+Thalamus,Thalamus_N007,11,110.0,11
+Thalamus,Thalamus_N008,11,110.0,11
+Thalamus,Thalamus_N009,11,110.0,11
+Thalamus,Thalamus_N010,10,100.0,10
+Motor Cortex,Motor Cortex_N001,6,60.0,6
+Motor Cortex,Motor Cortex_N002,6,60.0,6
+Motor Cortex,Motor Cortex_N003,7,70.0,7
+Motor Cortex,Motor Cortex_N004,7,70.0,7
+Motor Cortex,Motor Cortex_N005,6,60.0,6
+Motor Cortex,Motor Cortex_N006,8,80.0,8
+Motor Cortex,Motor Cortex_N007,6,60.0,6
+Motor Cortex,Motor Cortex_N008,7,70.0,7
+Motor Cortex,Motor Cortex_N009,7,70.0,7
+Motor Cortex,Motor Cortex_N010,7,70.0,7
+Motor Cortex,Motor Cortex_N011,7,70.0,7
+Motor Cortex,Motor Cortex_N012,6,60.0,6
+Motor Cortex,Motor Cortex_N013,7,70.0,7
+Motor Cortex,Motor Cortex_N014,7,70.0,7
+Motor Cortex,Motor Cortex_N015,7,70.0,7
+Motor Cortex,Motor Cortex_N016,7,70.0,7
+Motor Cortex,Motor Cortex_N017,7,70.0,7
+Motor Cortex,Motor Cortex_N018,7,70.0,7
+Motor Cortex,Motor Cortex_N019,7,70.0,7
+Motor Cortex,Motor Cortex_N020,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N001,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N002,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N003,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N004,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N005,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N006,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N007,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N008,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N009,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N010,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N011,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N012,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N013,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N014,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N015,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N016,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N017,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N018,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N019,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N020,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N021,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N022,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N023,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N024,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N025,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N026,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N027,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N028,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N029,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N030,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N031,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N032,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N033,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N034,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N035,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N036,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N037,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N038,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N039,7,70.0,7
+Corticospinal Tract,Corticospinal Tract_N040,7,70.0,7

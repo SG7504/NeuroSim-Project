@@ -1,0 +1,116 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def simulate_realistic_response(current, time_points):
+    """
+    Simulate realistic neural response including action potentials and proper dynamics.
+    """
+    # Base parameters
+    resting_potential = -65.0  # mV
+    threshold = -55.0  # mV
+    spike_amplitude = 40.0  # mV
+    refractory_period = 2.0  # ms
+
+    # Initialize membrane potential
+    v_m = np.full_like(time_points, resting_potential)
+
+    # Current-dependent parameters
+    excitability = current * 20  # Scale factor for current effect
+
+    # Generate response
+    for i in range(1, len(time_points)):
+        dt = time_points[i] - time_points[i-1]
+        t = time_points[i]
+
+        # Stimulus effect (stronger with higher current)
+        if 2 < t < 8:  # Stimulus duration
+            stimulus = excitability * np.exp(-(t-5)**2 / 2)
+        else:
+            stimulus = 0
+
+        # Basic membrane dynamics
+        dv = (resting_potential - v_m[i-1]) / 5.0  # Natural decay to rest
+
+        # Add stimulus effect
+        v_m[i] = v_m[i-1] + (dv + stimulus) * dt
+
+        # Action potential generation
+        if v_m[i] > threshold and t > 2:
+            # Generate action potential
+            remaining_points = min(int(0.5/dt), len(time_points)-i)
+            ap_shape = spike_amplitude * np.exp(-np.arange(remaining_points)/(0.1/dt))
+            v_m[i:i+remaining_points] = resting_potential + ap_shape
+
+            # Add hyperpolarization after spike
+            hyperpol_points = min(int(1.0/dt), len(time_points)-i-remaining_points)
+            v_m[i+remaining_points:i+remaining_points+hyperpol_points] = resting_potential - 5
+
+            # Skip refractory period
+            i += int(refractory_period/dt)
+
+    return v_m
+
+def calculate_latency(response, time_points, threshold=-50.0):
+    """
+    Calculate latency as the time it takes to cross a given threshold after t=2.5 ms.
+    """
+    start_index = np.where(time_points >= 2.5)[0][0]  # Index corresponding to t=2.5 ms
+    above_threshold_indices = np.where(response[start_index:] > threshold)[0]
+    
+    if len(above_threshold_indices) > 0:
+        latency_index = start_index + above_threshold_indices[0]
+        return time_points[latency_index] - 2.5  # Latency relative to t=2.5 ms
+    else:
+        return None  # No crossing of the threshold
+
+# Main simulation parameters
+time_points = np.linspace(0, 20, 2000)  # Time points (20 ms with high resolution)
+currents = np.linspace(0.1, 1.0, 10)   # Different current values
+
+# Prepare data for plotting and table
+responses = []
+latencies = []
+
+for current in currents:
+    response = simulate_realistic_response(current, time_points)
+    responses.append(response)
+    
+    latency = calculate_latency(response, time_points)
+    latencies.append(latency)
+
+# Create figure with two subplots: one for the graph and one for the table
+fig, axes = plt.subplots(1, 2, figsize=(15, 6), gridspec_kw={'width_ratios': [3, 1]})
+
+# Plot the graph on the left subplot
+for current, response in zip(currents, responses):
+    axes[0].plot(time_points, response, label=f'{current:.2f} mA')
+axes[0].set_xlabel('Time (ms)')
+axes[0].set_ylabel('Membrane Potential (mV)')
+axes[0].set_title('Axon Response to DBS Stimulation')
+axes[0].grid(True)
+axes[0].legend(loc='upper right')
+
+# Create a table on the right subplot
+axes[1].axis('off')  # Turn off axes for the table subplot
+
+# Prepare table data
+table_data = []
+for current, latency in zip(currents, latencies):
+    if latency is not None:
+        table_data.append([f'{current:.2f} mA', f'{latency:.2f} ms'])
+    else:
+        table_data.append([f'{current:.2f} mA', 'No response'])
+
+# Add table to plot
+table_columns = ['Current (mA)', 'Latency (ms)']
+table = axes[1].table(cellText=table_data,
+                      colLabels=table_columns,
+                      loc='center',
+                      cellLoc='center')
+table.auto_set_font_size(False)
+table.set_fontsize(10)
+table.auto_set_column_width(col=list(range(len(table_columns))))
+
+# Adjust layout and show plot
+plt.tight_layout()
+plt.show()

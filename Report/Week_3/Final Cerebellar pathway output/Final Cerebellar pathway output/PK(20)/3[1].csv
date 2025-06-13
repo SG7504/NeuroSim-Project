@@ -1,0 +1,101 @@
+Group,Neuron ID,Spikes,Rate (Hz),Bursts
+Purkinje Cells,Purkinje Cells_N001,71,710.0,71
+Purkinje Cells,Purkinje Cells_N002,71,710.0,71
+Purkinje Cells,Purkinje Cells_N003,71,710.0,71
+Purkinje Cells,Purkinje Cells_N004,71,710.0,71
+Purkinje Cells,Purkinje Cells_N005,71,710.0,71
+Purkinje Cells,Purkinje Cells_N006,71,710.0,71
+Purkinje Cells,Purkinje Cells_N007,71,710.0,71
+Purkinje Cells,Purkinje Cells_N008,71,710.0,71
+Purkinje Cells,Purkinje Cells_N009,71,710.0,71
+Purkinje Cells,Purkinje Cells_N010,71,710.0,71
+Purkinje Cells,Purkinje Cells_N011,71,710.0,71
+Purkinje Cells,Purkinje Cells_N012,71,710.0,71
+Purkinje Cells,Purkinje Cells_N013,71,710.0,71
+Purkinje Cells,Purkinje Cells_N014,71,710.0,71
+Purkinje Cells,Purkinje Cells_N015,71,710.0,71
+Purkinje Cells,Purkinje Cells_N016,71,710.0,71
+Purkinje Cells,Purkinje Cells_N017,71,710.0,71
+Purkinje Cells,Purkinje Cells_N018,71,710.0,71
+Purkinje Cells,Purkinje Cells_N019,71,710.0,71
+Purkinje Cells,Purkinje Cells_N020,71,710.0,71
+DCN,DCN_N001,59,590.0,59
+DCN,DCN_N002,59,590.0,59
+DCN,DCN_N003,59,590.0,59
+DCN,DCN_N004,59,590.0,59
+DCN,DCN_N005,59,590.0,59
+DCN,DCN_N006,59,590.0,59
+DCN,DCN_N007,59,590.0,59
+DCN,DCN_N008,59,590.0,59
+DCN,DCN_N009,59,590.0,59
+DCN,DCN_N010,59,590.0,59
+Thalamus,Thalamus_N001,9,90.0,9
+Thalamus,Thalamus_N002,9,90.0,9
+Thalamus,Thalamus_N003,9,90.0,9
+Thalamus,Thalamus_N004,9,90.0,9
+Thalamus,Thalamus_N005,9,90.0,9
+Thalamus,Thalamus_N006,9,90.0,9
+Thalamus,Thalamus_N007,9,90.0,9
+Thalamus,Thalamus_N008,9,90.0,9
+Thalamus,Thalamus_N009,9,90.0,9
+Thalamus,Thalamus_N010,9,90.0,9
+Motor Cortex,Motor Cortex_N001,4,40.0,4
+Motor Cortex,Motor Cortex_N002,4,40.0,4
+Motor Cortex,Motor Cortex_N003,4,40.0,4
+Motor Cortex,Motor Cortex_N004,4,40.0,4
+Motor Cortex,Motor Cortex_N005,4,40.0,4
+Motor Cortex,Motor Cortex_N006,4,40.0,4
+Motor Cortex,Motor Cortex_N007,4,40.0,4
+Motor Cortex,Motor Cortex_N008,4,40.0,4
+Motor Cortex,Motor Cortex_N009,4,40.0,4
+Motor Cortex,Motor Cortex_N010,4,40.0,4
+Motor Cortex,Motor Cortex_N011,4,40.0,4
+Motor Cortex,Motor Cortex_N012,4,40.0,4
+Motor Cortex,Motor Cortex_N013,4,40.0,4
+Motor Cortex,Motor Cortex_N014,4,40.0,4
+Motor Cortex,Motor Cortex_N015,4,40.0,4
+Motor Cortex,Motor Cortex_N016,4,40.0,4
+Motor Cortex,Motor Cortex_N017,4,40.0,4
+Motor Cortex,Motor Cortex_N018,4,40.0,4
+Motor Cortex,Motor Cortex_N019,4,40.0,4
+Motor Cortex,Motor Cortex_N020,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N001,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N002,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N003,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N004,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N005,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N006,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N007,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N008,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N009,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N010,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N011,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N012,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N013,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N014,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N015,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N016,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N017,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N018,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N019,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N020,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N021,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N022,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N023,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N024,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N025,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N026,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N027,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N028,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N029,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N030,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N031,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N032,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N033,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N034,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N035,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N036,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N037,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N038,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N039,4,40.0,4
+Corticospinal Tract,Corticospinal Tract_N040,4,40.0,4

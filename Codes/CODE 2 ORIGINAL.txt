@@ -1,0 +1,84 @@
+from neuron import h, gui
+import numpy as np
+import matplotlib.pyplot as plt
+def setup_electrode():
+"""Define electrode geometry and properties."""
+electrode = h.Section(name='electrode_tip')
+electrode.nseg = 1
+electrode.diam = 0.01 # 0.1 mm → 0.01 cm
+electrode.L = 0.1 # 1.0 mm → 0.1 cm
+electrode.Ra = 100 # Axial resistance (Ohm·cm)
+electrode.cm = 1 # Capacitance (µF/cm²)
+return electrode
+def setup_axon():
+"""Define a nearby axon to record membrane potential."""
+axon = h.Section(name='axon')
+axon.nseg = 11
+axon.diam = 1.0 # µm → converted to cm internally
+axon.L = 100 # µm → 0.01 cm
+axon.insert('hh') # Hodgkin-Huxley ion channels
+return axon
+def setup_stimulus(electrode, delay=1, duration=1):
+"""Attach current clamp to electrode."""
+stim = h.IClamp(electrode(0.5))
+stim.delay = delay # ms
+stim.dur = duration # ms
+return stim
+def run_simulation(stim, axon, currents, sim_time=20):
+"""Run simulation for each current and record results."""
+results = []
+for current in currents:
+# Create new Vectors for each simulation
+v_vec = h.Vector()
+t_vec = h.Vector()
+# Record membrane potential and time
+v_vec.record(axon(0.5)._ref_v)
+t_vec.record(h._ref_t)
+# Set simulation parameters
+stim.amp = current
+h.tstop = sim_time
+# Initialize and run
+h.finitialize(-65) # Reset to resting potential
+h.run()
+# Store results as numpy arrays
+results.append({
+'current': current,
+'voltage': np.array(v_vec),
+'time': np.array(t_vec)
+})
+return results
+def analyze_results(results, safe_threshold=0.0):
+"""Plot responses and determine safe optimum current."""
+plt.figure(figsize=(10, 6))
+colors = plt.cm.viridis(np.linspace(0, 1, len(results)))
+for result, color in zip(results, colors):
+current = result['current']
+voltage = result['voltage']
+time = result['time']
+plt.plot(time, voltage, label=f'{current:.2f} mA', color=color)
+plt.xlabel('Time (ms)')
+plt.ylabel('Membrane Potential (mV)')
+plt.title('Axon Response to DBS Stimulation')
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.grid(True)
+plt.tight_layout()
+# Find current causing max depolarization below safety threshold
+max_depolarizations = [np.max(result['voltage']) for result in results]
+safe_currents = [result['current'] for result, depol in zip(results, max_depolarizations)
+if depol <= safe_threshold]
+optimum_current = max(safe_currents) if safe_currents else min(currents)
+print(f'Optimum current (safe ≤{safe_threshold} mV): {optimum_current:.2f} mA')
+return plt
+# Main execution
+if __name__ == "__main__":
+h.load_file("stdrun.hoc")
+# Setup
+electrode = setup_electrode()
+axon = setup_axon()
+stim = setup_stimulus(electrode)
+# Define current range
+currents = np.linspace(0.1, 1.0, 10) # 0.1–1.0 mA
+# Run simulation and plot results
+results = run_simulation(stim, axon, currents)
+plt = analyze_results(results, safe_threshold=30.0)
+plt.show()

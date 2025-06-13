@@ -1,0 +1,67 @@
+#CODE-1
+
+#diameter=1mm & lenght =0.5mm
+
+from neuron import h, gui
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load NEURON's GUI
+h.load_file("stdrun.hoc")
+
+# Define the geometry of the electrode
+electrode_diameter = 1  # in mm (changed from 0.1 to 0.5)
+electrode_length = 0.5  # in mm
+
+electrode_tip = h.Section(name='electrode_tip')
+electrode_tip.nseg = 1
+electrode_tip.diam = electrode_diameter
+electrode_tip.L = electrode_length
+
+# Define the material properties
+electrode_tip.Ra = 100  # Axial resistance in Ohm*cm
+electrode_tip.cm = 1  # Membrane capacitance in uF/cm^2
+
+# Define the surrounding tissue properties
+tissue_resistivity = 300  # Ohm*cm
+
+# Define the stimulation protocol
+stim = h.IClamp(electrode_tip(0.5))  # Place the electrode in the middle of the section
+stim.dur = 1.0  # Duration of the stimulus in ms
+stim.delay = 1.0  # Delay before the stimulus starts in ms
+
+# Define a range of currents to test
+currents = np.linspace(0.1, 1.0, 10)  # Currents from 0.1 to 1.0 mA in 10 steps
+
+# Define a vector to record the membrane potential
+v_vec = h.Vector()
+t_vec = h.Vector()
+v_vec.record(electrode_tip(0.5)._ref_v)
+t_vec.record(h._ref_t)
+
+# Run the simulation for each current
+results = []
+for i, current in enumerate(currents):
+    stim.amp = current  # Set the current amplitude
+    h.tstop = 10.0  # Set the simulation duration in ms
+    h.run()
+    # Store the results
+    results.append((current, np.array(v_vec), np.array(t_vec)))
+    # Reset the simulation
+    h.finitialize(-65)
+
+# Plot the results
+plt.figure(figsize=(10, 6))
+for current, v, t in results:
+    plt.plot(t, v, label=f'{current} mA')
+plt.xlabel('Time (ms)')
+plt.ylabel('Membrane Potential (mV)')
+plt.title('Membrane Potential Response to DBS Stimulation')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Determine the optimum current based on the response
+# For example, the current that produces the maximum depolarization without causing excessive hyperpolarization
+optimum_current = currents[np.argmax([np.max(v) for _, v, _ in results])]
+print(f'Optimum current: {optimum_current} mA')

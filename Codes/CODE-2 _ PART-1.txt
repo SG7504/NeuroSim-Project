@@ -1,0 +1,107 @@
+#CODE-2
+
+from neuron import h, gui
+import numpy as np
+import matplotlib.pyplot as plt
+
+def setup_electrode():
+    """Define electrode geometry and properties."""
+    electrode = h.Section(name='electrode_tip')
+    electrode.nseg = 4
+    electrode.diam = 0.01  # 0.1 mm → 0.01 cm
+    electrode.L = 0.1  # 1.0 mm → 0.1 cm
+    electrode.Ra = 100  # Axial resistance (Ohm·cm)
+    electrode.cm = 1  # Capacitance (µF/cm²)
+    return electrode
+
+def setup_axon():
+    """Define a nearby axon to record membrane potential."""
+    axon = h.Section(name='axon')
+    axon.nseg = 11
+    axon.diam = 1.0  # µm → converted to cm internally
+    axon.L = 100  # µm → converted to cm internally
+    axon.insert('hh')  # Hodgkin-Huxley ion channels
+    return axon
+
+def setup_stimulus(electrode, delay=1, duration=1):
+    """Attach current clamp to electrode."""
+    stim = h.IClamp(electrode(0.5))
+    stim.delay = delay  # ms
+    stim.dur = duration  # ms
+    return stim
+
+def run_simulation(stim, axon, currents, sim_time=20):
+    """Run simulation for each current and record results."""
+    results = []
+    for current in currents:
+        # Create new Vectors for each simulation
+        v_vec = h.Vector()
+        t_vec = h.Vector()
+        # Record membrane potential and time
+        v_vec.record(axon(0.5)._ref_v)
+        t_vec.record(h._ref_t)
+        # Set simulation parameters
+        stim.amp = current
+        h.tstop = sim_time
+        # Initialize and run
+        h.finitialize(-65)  # Reset to resting potential
+        h.run()
+        # Store results as numpy arrays
+        results.append({
+            'current': current,
+            'voltage': np.array(v_vec),
+            'time': np.array(t_vec)
+        })
+    return results
+
+def analyze_results(results, safe_range=(-70, -65)):
+    """Plot responses and determine safe optimum current."""
+    plt.figure(figsize=(10, 6))
+    colors = plt.cm.viridis(np.linspace(0, 1, len(results)))
+
+    optimum_current = None
+
+    for result, color in zip(results, colors):
+        current = result['current']
+        voltage = result['voltage']
+        time = result['time']
+
+        plt.plot(time, voltage, label=f'{current:.2f} μA', color=color)
+
+        # Check if the voltage stays within the safe range (-70 mV to -65 mV)
+        if np.all(voltage >= safe_range[0]) and np.all(voltage <= safe_range[1]):
+            optimum_current = current if optimum_current is None else min(optimum_current, current)
+
+    plt.xlabel('Time (ms)')
+    plt.ylabel('Membrane Potential (mV)')
+    plt.title('Axon Response to DBS Stimulation')
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.grid(True)
+    plt.tight_layout()
+
+    if optimum_current is not None:
+        print(f'Optimum current within safe range ({safe_range[0]} to {safe_range[1]} mV): {optimum_current:.2f} μA')
+    else:
+        print(f'No current found that keeps membrane potential within the safe range ({safe_range[0]} to {safe_range[1]} mV).')
+
+    return plt
+
+# Main execution
+if __name__ == "__main__":
+    h.load_file("stdrun.hoc")
+
+    # Setup
+    electrode = setup_electrode()
+    axon = setup_axon()
+    stim = setup_stimulus(electrode)
+
+    # Define current range (100–500 μA converted to mA for NEURON)
+    currents = np.linspace(0.1, 0.5, 10)  # Convert μA to mA (100 μA → 0.1 mA)
+
+    # Run simulation and plot results
+    results = run_simulation(stim, axon, currents)
+
+    # Analyze results with a safe membrane potential range of -70 mV to -65 mV
+    plt = analyze_results(results, safe_range=(-70, -65))
+
+    plt.show()

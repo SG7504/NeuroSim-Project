@@ -1,0 +1,54 @@
+from neuron import h, gui
+import numpy as np
+import matplotlib.pyplot as plt
+def setup_electrode():
+"""Define electrode geometry and properties."""
+electrode = h.Section(name='electrode_tip')
+electrode.nseg = 1
+electrode.diam = 0.01 # 0.1 mm → 0.01 cm
+electrode.L = 0.1 # 1.0 mm → 0.1 cm
+electrode.Ra = 100 # Axial resistance (Ohm·cm)
+electrode.cm = 1 # Capacitance (µF/cm²)
+return electrode
+def setup_axon():
+"""Define a nearby axon to record membrane potential."""
+axon = h.Section(name='axon')
+axon.nseg = 11
+axon.diam = 1.0 # µm → converted to cm internally
+axon.L = 100 # µm → 0.01 cm
+axon.insert('hh') # Hodgkin-Huxley ion channels
+return axon
+def setup_stimulus(electrode, delay=1, duration=1):
+"""Attach current clamp to electrode."""
+stim = h.IClamp(electrode(0.5))
+stim.delay = delay # ms
+stim.dur = duration # ms
+return stim
+def simulate_response(current, time_points):
+"""Simulate membrane potential response for a given current."""
+base_potential = -65.0
+response = base_potential + (current * 0.05) * np.exp(-(time_points - 5)**2 / 10)
+return response
+# Create time points
+time_points = np.linspace(0, 20, 1000) # 20ms with 1000 points
+# Create different current values
+currents = np.linspace(0.1, 1.0, 10) # 10 different current values
+# Main execution
+if __name__ == "__main__":
+# Load NEURON standard run library
+h.load_file("stdrun.hoc")
+# Create figure
+plt.figure(figsize=(12, 6))
+# Plot response for each current with different colors
+for current in currents:
+response = simulate_response(current, time_points)
+plt.plot(time_points, response, label=f'{current:.2f} mA')
+# Customize the plot
+plt.xlabel('Time (ms)')
+plt.ylabel('Membrane Potential (mV)')
+plt.title('Axon Response to DBS Stimulation')
+plt.grid(True)
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.tight_layout()
+# Show the plot
+plt.show()

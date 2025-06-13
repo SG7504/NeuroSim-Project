@@ -1,0 +1,53 @@
+from neuron import h, gui
+import numpy as np
+import matplotlib.pyplot as plt
+
+def simulate_response(current, time_points):
+    """Simulate membrane potential response for a given current."""
+    base_potential = -65.0
+    response = base_potential + (current * 0.05) * np.exp(-(time_points - 5)**2 / 10)
+    return response
+
+# Main execution
+if __name__ == "__main__":
+    # Create time points and currents
+    time_points = np.linspace(0, 20, 1000)  # 20ms with 1000 points
+    currents = np.linspace(0.1, 1.0, 10)   # 10 different current values
+
+    # Calculate peak values
+    peak_values = []
+    for current in currents:
+        response = simulate_response(current, time_points)
+        # Calculate peak value
+        peak = np.max(response)
+        peak_values.append(peak)
+
+    # Create a two-panel figure: one for the plot and one for the table
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+
+    # Plot the membrane potential responses
+    colors = plt.cm.viridis(np.linspace(0, 1, len(currents)))
+    for current, color in zip(currents, colors):
+        response = simulate_response(current, time_points)
+        ax1.plot(time_points, response, label=f'{current:.2f} mA', color=color)
+
+    # Customize the plot
+    ax1.set_xlabel('Time (ms)')
+    ax1.set_ylabel('Membrane Potential (mV)')
+    ax1.set_title('Axon Response to DBS Stimulation')
+    ax1.grid(True)
+    ax1.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+
+    # Prepare table data with currents and their corresponding peak values
+    col_labels = ['Current (mA)', 'Peak Value (mV)']
+    cell_text = []
+    for cur, peak in zip(currents, peak_values):
+        cell_text.append([f'{cur:.2f}', f'{peak:.2f}'])
+
+    # Create the table in the second subplot
+    table = ax2.table(cellText=cell_text, colLabels=col_labels, loc='center')
+    ax2.axis('off')
+    ax2.set_title('Response Metrics')
+
+    plt.tight_layout()
+    plt.show()
