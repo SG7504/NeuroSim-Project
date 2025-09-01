@@ -84,7 +84,8 @@ Deep Brain Stimulation (DBS) is a neurosurgical technique used to manage disorde
 
 ## 📄 License
 
-This project is open-source under the **MIT License**. Feel free to use, adapt, and share with attribution.
+This project is licensed under the Apache License 2.0 - see the LICENSE file for details.
+
 
 ---
 
